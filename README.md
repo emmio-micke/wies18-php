@@ -40,3 +40,23 @@ Configuring VirtualHosts in XAMPP on Mac: https://jonathannicol.com/blog/2012/03
 
 Föreläsning 05 em - Virtual hosts & livekodning: https://www.youtube.com/watch?v=2yrOI9XP6aI
 
+Föreläsning 06 fm - GIT Brancher: https://www.youtube.com/watch?v=PIg2wS5Hol4
+
+Föreläsning 06 em - GIT Reverting: https://www.youtube.com/watch?v=mjJ5tTOAr1c
+
+# Vecka 09
+
+Föreläsning 07 fm - GIT Branchningsstrategier, hooks: https://www.youtube.com/watch?v=6Q6v0ZsZZf0
+
+Föreläsning 07 em - PHP Filhantering, Scope: https://www.youtube.com/watch?v=XL5YQgL-saw
+
+Lösningsförslag, detaljsida produkter, redigeringssida produkter, ladda upp filer: https://www.youtube.com/watch?v=xwLNBIJ38N4
+
+Föreläsning 08 fm - Inkludera filer, objektorientering: https://www.youtube.com/watch?v=goPlgLm_XBo
+
+Föreläsning 08 em - Objektorientering, gruppuppgift: https://www.youtube.com/watch?v=H2EqjYB7dW0
+
+Föreläsning 09 fm: 
+
+Föreläsning 09 em: 
+
