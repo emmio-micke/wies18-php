@@ -1,0 +1,8 @@
+div.post {
+    width: 500px;
+    background-color: aquamarine;
+    border: 1px dashed black;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 10px;
+}
