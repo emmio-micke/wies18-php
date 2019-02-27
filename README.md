@@ -1,5 +1,3 @@
-# wies18-php
-
 # Vecka 07
 
 Länkar
