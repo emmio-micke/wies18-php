@@ -16,11 +16,18 @@ class Vehicle {
 	use CarService;
 	use CarPainting;
     
-    public $color, $model, $speed, $noOfWheels;
+    public $color, $speed, $noOfWheels;
+    protected $model;
 
     public function __construct($model_name = '') {
         $this->model = $model_name;
         $this->speed = 0;
+    }
+    
+    public function setModel($value) {
+        if (is_string($value)) {
+            $this->model = $value;
+        }
     }
 
     public function accelerate($speed_change) {
@@ -39,7 +46,14 @@ class Vehicle {
     }
 }
 
-$car = new Vehicle("Audi");
+class Sportscar extends Vehicle {
+    
+}
+
+$car = new Sportscar("Audi");
+$car->setModel("Tesla");
+
+/*
 $car->color = "yellow";
 $car->print();
 $car->draw_line();
@@ -52,17 +66,15 @@ $car->draw_line();
 
 $car->print();
 
-/*
+- Skapa två stycken traits.
 
-x Skapa två stycken traits.
-
-x Den ena ska implementera metoden booking() som tar ett datum och ett 
+- Den ena ska implementera metoden booking() som tar ett datum och ett 
 objekt som parameter och skriva ut ett meddelande om att en bokning är 
 skapad för besiktning för fordonet.
 
-x Den andra ska implementera metoden paint() som tar en parameter och 
+- Den andra ska implementera metoden paint() som tar en parameter och 
 byter färg på fordonet.
 
-x Använd trait:sen i Vehicle-klassen och anropa dem från dina objekt.
+- Använd trait:sen i Vehicle-klassen och anropa dem från dina objekt.
 
 */
