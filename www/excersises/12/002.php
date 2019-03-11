@@ -34,12 +34,16 @@ PDO::FETCH_BOTH
 PDO::FETCH_OBJ
 PDO::FETCH_LAZY
 PDO::FETCH_CLASS, 'Customers'
-class Customers {}
 */
+class Customers {}
 
+$customers = $pdo->query('SELECT * FROM customers')->fetchAll(PDO::FETCH_CLASS, 'Customers');
 
-$customers = $pdo->query('SELECT * FROM customers')->fetchAll(PDO::FETCH_ASSOC);
+/*
+$customer = $customers[0];
 
+print_r($customer->customerNumber);
+*/
 print_r($customers);
 
 

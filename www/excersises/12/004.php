@@ -27,12 +27,12 @@ try {
      throw new \PDOException($e->getMessage(), (int)$e->getCode());
 }
 
-$arr = [1,2,3];
-$in  = str_repeat('?,', count($arr) - 1) . '?';
-$sql = "SELECT * FROM table WHERE column IN ($in)";
-$stm = $db->prepare($sql);
+$arr = ['S10_1678', 'S10_1949', 'S10_2016'];
+$in  = str_repeat('?,', count($arr) - 1) . '?'; // '?,?,?,?'
+$sql = "SELECT * FROM products WHERE productCode IN ($in)";
+$stm = $pdo->prepare($sql);
 $stm->execute($arr);
-$data = $stm->fetchAll();
+$data = $stm->fetchAll(PDO::FETCH_ASSOC);
 
 print_r($data);
 

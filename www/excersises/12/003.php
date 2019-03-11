@@ -32,7 +32,9 @@ $data = $pdo->query("SELECT count(*) FROM customers")->fetchColumn();
 $data = $pdo->query('SELECT customerName FROM customers')->fetchAll(PDO::FETCH_COLUMN);
 $data = $pdo->query('SELECT productCode, productName FROM products')->fetchAll(PDO::FETCH_KEY_PAIR);
 $data = $pdo->query('SELECT * FROM customers')->fetchAll(PDO::FETCH_UNIQUE);
+$data = $pdo->query('SELECT productLine, productCode, productName FROM products')->fetchAll(PDO::FETCH_GROUP);
 */
+
 $data = $pdo->query('SELECT productLine, productCode, productName FROM products')->fetchAll(PDO::FETCH_GROUP);
 
 print_r($data);

@@ -1,3 +1,12 @@
+<pre>
+<?php
+
+if (isset($_POST['action'])) {
+    print_r($_POST['remove']);
+}
+
+?>
+</pre>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,42 +18,14 @@
     <script src="main.js"></script>
 </head>
 <body>
-<h1>Hello world!</h1>
-<pre>
-<?php
-
-$host = 'localhost';
-$db   = 'classicmodels';
-$user = 'root';
-$pass = 'root';
-$charset = 'utf8mb4';
-
-$dsn = "mysql:host=$host;dbname=$db;charset=$charset";
-
-try {
-     $pdo = new PDO($dsn, $user, $pass);
-} catch (\PDOException $e) {
-     throw new \PDOException($e->getMessage(), (int)$e->getCode());
-}
-
-$sql = "SELECT productLine, productCode, productName FROM products ";
-
-$orders  = ["productName","productCode","qty"]; //field names
-$key     = array_search($_GET['sort'] ?? null, $orders); // see if we have such a name
-$orderby = $orders[$key]; //if not, first one will be set automatically. smart enuf :)
-
-if (isset($_GET['productLine'])) {
-    $sql .= " WHERE productLine = '" . filter_input(INPUT_GET, 'productLine', FILTER_SANITIZE_STRING) . "' ";
-}
-
-$sql .= " ORDER BY $orderby ";
-
-$data = $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
-
-print_r($data);
-
-
-?>
-</pre>
+    <form method="post">
+        Välj vilka produkter du vill ta bort:<br>
+        <input type="checkbox" name="remove[]" value="1"> Produkt med id 1<br>
+        <input type="checkbox" name="remove[]" value="2"> Produkt med id 2<br>
+        <input type="checkbox" name="remove[]" value="3"> Produkt med id 3<br>
+        <input type="checkbox" name="remove[]" value="4"> Produkt med id 4<br>
+        <input type="checkbox" name="remove[]" value="5"> Produkt med id 5<br>
+        <input type="submit" name="action" value="Ta bort">
+    </form>
 </body>
 </html>

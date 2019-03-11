@@ -135,3 +135,5 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.gitignore.io/api/macos,windows,phpstorm
+www/excersises/13/vendor
+composer.lock

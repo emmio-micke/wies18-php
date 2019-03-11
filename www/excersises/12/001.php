@@ -1,18 +1,51 @@
+<pre>
 <?php
+
+$host = 'localhost';
+$db   = 'classicmodels';
+$user = 'root';
+$pass = 'root';
+$charset = 'utf8mb4';
+
+$dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+
+try {
+     $pdo = new PDO($dsn, $user, $pass);
+} catch (\PDOException $e) {
+     throw new \PDOException($e->getMessage(), (int)$e->getCode());
+}
 
 if (isset($_POST['action'])) {
     $username = "Bobby';DROP TABLE users; -- ";
 
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+    $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_MAGIC_QUOTES);
+    $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_MAGIC_QUOTES);
 
-    $query = "SELECT * FROM users WHERE user='$name' AND password = '$password'";
-    $query = "SELECT * FROM users WHERE user='$name' AND password = 'Bobby';DROP TABLE users; -- '";
+    $query = "SELECT * FROM users WHERE user = ? AND password = ?";
+    $stmt = $pdo->prepare($query);
+    $stmt->execute([$user, $password]);
 
-    $query = "INSERT INTO users SET name='Sarah O'Hara'";
+    $query = "SELECT * FROM users WHERE (email = :user OR user = :user) AND password = :pass";
+    $stmt = $pdo->prepare($query);
+    $stmt->execute([':user' => $user, ':pass' => $password]);
+
+    $query = "SELECT * FROM products WHERE id = :product_id";
+    $stmt = $pdo->prepare($query);
+    $stmt->bindValue(':product_id', $product_id, PDO::PARAM_INT);
+    $stmt->execute();
+
+
+
+//    $stmt->execute(['productLine' => $product_line]);
+   
+
+    echo $query;
+
+//    $query = "INSERT INTO users SET name='Sarah O'Hara'";
 }
 
 ?>
+</pre>
 <!DOCTYPE html>
 <html>
 <head>

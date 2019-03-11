@@ -1,43 +1,3 @@
-<?php
-
-class DB {
-    private $host = 'localhost';
-    private $db   = 'classicmodels';
-    private $user = 'root';
-    private $pass = 'root';
-    private $charset = 'utf8mb4';
-    public $pdo;
-
-    public function __construct() {
-        $dsn = "mysql:host=$this->host;dbname=$this->db;charset=$this->charset";
-
-        try {
-            $this->pdo = new PDO($dsn, $this->user, $this->pass);
-        } catch (\PDOException $e) {
-            throw new \PDOException($e->getMessage(), (int)$e->getCode());
-        }
-    }
-
-}
-
-class User {
-    private $db;
-
-    public function __construct() {
-        $obj = new DB();
-        $this->db = $obj->pdo;
-    }
-
-    public function login($user, $pass) {
-        $stmt = $this->db->prepare("SELECT password FROM users WHERE username = :user");
-        $stmt->execute([':user' => $user]);
-        $hash = $stmt->fetchColumn();
-
-        return password_verify($pass, $hash);
-    }
-}
-
-?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -53,15 +13,52 @@ class User {
 <pre>
 <?php
 
-// echo password_hash('hemligt', PASSWORD_DEFAULT);
+$host = 'localhost';
+$db   = 'classicmodels';
+$user = 'root';
+$pass = 'root';
+$charset = 'utf8mb4';
 
-$user = new User();
+$dsn = "mysql:host=$host;dbname=$db;charset=$charset";
 
-if ($user->login('micke', 'hemligt')) {
-    echo "Logged in<br>";
-} else {
-    echo "Not logged in<br>";
+try {
+     $pdo = new PDO($dsn, $user, $pass);
+} catch (\PDOException $e) {
+     throw new \PDOException($e->getMessage(), (int)$e->getCode());
 }
+
+$sql = "SELECT productLine, productCode, productName FROM products ";
+
+/*
+if (isset($_GET['sort'])) {
+    $tmp = $_GET['sort'];
+} else {
+    $tmp = null;
+}
+
+$tmp = isset($_GET['sort']) ? $_GET['sort'] : null;
+
+$tmp = $_GET['sort'] ?? null;
+*/
+
+// http://localhost/006.php?sort=productCode&productLine=Motorcycles
+
+$orders  = ["productName","productCode","productLine"]; //field names
+$key     = array_search($_GET['sort'] ?? null, $orders); // see if we have such a name
+$orderby = $orders[$key]; //if not, first one will be set automatically. smart enuf :)
+
+if (isset($_GET['productLine'])) {
+    $sql .= " WHERE productLine = '" . filter_input(INPUT_GET, 'productLine', FILTER_SANITIZE_MAGIC_QUOTES) . "' ";
+}
+
+$sql .= " ORDER BY $orderby ";
+
+echo $sql . "<br>";
+
+$data = $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+
+print_r($data);
+
 
 ?>
 </pre>
