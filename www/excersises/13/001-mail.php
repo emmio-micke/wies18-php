@@ -20,9 +20,8 @@ $mail->addReplyTo('mikael.olsson@emmio.se', 'Mikael Olsson');
 
 $mail->addAddress ('mikael.olsson@emmio.se', 'Mikael Olsson');
 
-$mail->Subject = 'PHPMailer SMTP test';
+$mail->Subject = 'Detta är ett testmail';
 
-$mail->AltBody = "Line 1\r\nLine 2\r\nLine 3";
 $mail->Body = "Line 1\r\nLine 2\r\nLine 3";
 
 if(!$mail->send()){
