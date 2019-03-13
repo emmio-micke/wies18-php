@@ -137,3 +137,4 @@ $RECYCLE.BIN/
 # End of https://www.gitignore.io/api/macos,windows,phpstorm
 www/excersises/13/vendor
 composer.lock
+www/excersises/14/phpunit/vendor
