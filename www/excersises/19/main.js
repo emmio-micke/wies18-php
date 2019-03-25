@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
     let btnCalc = document.getElementById("calc");
 
     function getValueFromField(element) {
-        if (element.value == '') {
+        if (element.value === '') {
             return 0;
         }
         if (!isNaN(element.value)) {
@@ -17,6 +17,10 @@ document.addEventListener("DOMContentLoaded", function(e) {
 
         sum += getValueFromField(document.getElementById("player1_ones"));
         sum += getValueFromField(document.getElementById("player1_twos"));
+        sum += getValueFromField(document.getElementById("player1_threes"));
+        sum += getValueFromField(document.getElementById("player1_fours"));
+        sum += getValueFromField(document.getElementById("player1_fives"));
+        sum += getValueFromField(document.getElementById("player1_sixes"));
 
         document.getElementById("playerone_sum").innerText = sum;
 
