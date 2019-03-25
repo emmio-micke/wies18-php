@@ -22,12 +22,12 @@ document.addEventListener("DOMContentLoaded", function(e) {
         sum += getValueFromField(document.getElementById("player1_fives"));
         sum += getValueFromField(document.getElementById("player1_sixes"));
 
-        document.getElementById("playerone_sum").innerText = sum;
+        document.getElementById("player1_sum").innerText = sum;
 
         if (sum >= 63) {
-            document.getElementById("playerone_bonus").innerText = 50;
+            document.getElementById("player1_bonus").innerText = 50;
         } else {
-            document.getElementById("playerone_bonus").innerText = 0;
+            document.getElementById("player1_bonus").innerText = 0;
         }
     });
 });

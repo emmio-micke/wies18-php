@@ -6,7 +6,7 @@
     <title>Yatzy</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="main.css">
-    <script src="main.js"></script>
+    <script src="main1.js"></script>
 </head>
 <body>
     <table>
@@ -58,13 +58,13 @@
 
         <tr>
             <td>Summa</td>
-            <td id="playerone_sum"></td>
+            <td id="player1_sum"></td>
             <td colspan="3"></td>
         </tr>
 
         <tr>
             <td>Bonus</td>
-            <td id="playerone_bonus"></td>
+            <td id="player1_bonus"></td>
             <td colspan="3"></td>
         </tr>
 
